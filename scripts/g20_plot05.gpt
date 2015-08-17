@@ -1,0 +1,21 @@
+set datafile separator ","
+set terminal png
+set xlabel "Iterations"
+set title "Best Fit line for step time averaged"
+set ylabel "Step Time"
+set output "./plots/g20_gnuplot05.png"
+set key top left
+set yrange [0:4]
+
+
+z(x)=p*x+q
+fit z(x) "./data/g20_project_bash.csv" using 1:3 via p,q
+
+
+plot "./data/g20_project_bash.csv" using  1:3 smooth unique title "step time average for normal" with p,\
+	 y(x) title "random data best fit line",\
+	 z(x) title "normal data best fit line"
+
+
+
+

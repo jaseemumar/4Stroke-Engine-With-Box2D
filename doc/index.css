@@ -1,0 +1,25 @@
+body{
+/*
+  background: url(image.jpg) no-repeat center center fixed; 
+*/
+    background-color:#BCC6CC;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin-left : 200px;
+  margin-right : 200px;
+  margin-top : 50px;
+  margin-bottom:50px;
+}
+
+img.img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1{
+    color:#800000;
+    text-align : center;
+}

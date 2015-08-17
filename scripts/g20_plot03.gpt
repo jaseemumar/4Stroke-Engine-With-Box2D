@@ -1,0 +1,13 @@
+set datafile separator ","
+set xlabel "iterations"
+set ylabel "time (ms)"
+set title "Plots bar graph of the step time and the error bars"
+set boxwidth 0.5
+set style fill solid
+set terminal png
+set key top left
+set yrange [0:4]
+set output "./plots/g20_plot03.png"
+
+plot "./data/g20_project_bash.csv" using 1:3 smooth unique title "step time average", \
+	"./data/g20_project_bash.csv" using ((floor($0/4.0)+1)):3:(1) smooth unique title "error bars step time" with errorbars

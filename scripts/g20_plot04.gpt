@@ -1,0 +1,24 @@
+set datafile separator ","
+set key off
+set border 3
+set title "Plots frequency (Bar graph) of the step times and cumulative graph"
+set terminal png
+set key top left
+set output "./plots/g20_plot04.png"
+ROLLNO = 81
+ReRUN = 150
+set yrange [0:16]
+set boxwidth 0.04 absolute
+set style fill solid 1.0 noborder
+set datafile separator ","
+bin_width = 0.05;
+set xtic 0.05
+bin_number(x) = floor(x/bin_width)
+
+
+
+rounded(x) = (bin_width * ( bin_number(x)))
+start = (ROLLNO - 1)* (ReRUN - 1) #rerun is 1+ frequency;
+end = start + ReRUN -1;	
+plot "./data/g20_project_bash.csv" every ::start::end using (rounded($3)):(1) smooth frequency title "frequency plot" with boxes, \
+	"./data/g20_project_bash.csv" every ::start::end using (rounded($3)):(1) s cumul title "cumulative plot"
